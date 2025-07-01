@@ -1,21 +1,8 @@
 services:
-  summarization_app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  streamlit_app:
+    build: .
     ports:
       - "8501:8501"
     volumes:
-      - ./LORA:/app/LORA
-      - ./data:/app/data
-    environment:
-      - PYTHONUNBUFFERED=1
-      - MODEL_PATH=/app/LORA/t5_small_summarizer_2
-      - DATA_PATH=/app/data
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+      - .:/app
+    restart: unless-stopped
