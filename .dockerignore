@@ -1,0 +1,6 @@
+.git
+__pycache__
+*.pyc
+*.ipynb
+datasets_used.txt
+*.csv
